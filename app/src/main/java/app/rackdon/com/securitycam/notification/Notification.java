@@ -8,7 +8,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
-import app.rackdon.com.securitycam.MainActivity;
+import app.rackdon.com.securitycam.StreamActivity;
 import app.rackdon.com.securitycam.R;
 
 public class Notification {
@@ -28,7 +28,7 @@ public class Notification {
 
     private void createNotification() {
         notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
-        Intent serverService = new Intent(context, MainActivity.class);
+        Intent serverService = new Intent(context, StreamActivity.class);
         PendingIntent pIntent = PendingIntent.getActivity(context, 0, serverService, 0);
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         notification = new NotificationCompat.Builder(context)

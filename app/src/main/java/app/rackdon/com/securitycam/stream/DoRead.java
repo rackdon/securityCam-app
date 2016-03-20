@@ -34,16 +34,14 @@ public class DoRead extends AsyncTask<String, Void, MjpegInputStream> {
             inputStream = connection.getInputStream();
 
             return new MjpegInputStream(inputStream);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e) {
             Log.wtf(TAG, "Request failed", e);
-            //Error connecting to camera
             createDialog();
-            dialog.show();
+//            dialog.show();
+            return null;
         }
 
-        return null;
+//        return null;
     }
 
     protected void onPostExecute(MjpegInputStream result) {
@@ -63,8 +61,6 @@ public class DoRead extends AsyncTask<String, Void, MjpegInputStream> {
                 dialog.cancel();
             }
         });
-
-
     }
 
     public interface DoReadCallback{

@@ -1,13 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="app.rackdon.com.securitycam.MainActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Video"
+        android:id="@+id/video"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="120dp"
+        android:layout_alignLeft="@+id/configuration"
+        android:layout_alignStart="@+id/configuration"
+        android:layout_alignRight="@+id/configuration"
+        android:layout_alignEnd="@+id/configuration"
+        android:onClick="videoActivity"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Configuration"
+        android:id="@+id/configuration"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="105dp" />
 
-    <include layout="@layout/content_main" />
-
-</android.support.design.widget.CoordinatorLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Image Download"
+        android:id="@+id/download"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

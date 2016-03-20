@@ -2,13 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="app.rackdon.com.securitycam.MainActivity"
+    tools:context=".StreamActivity"
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/stream" />
+        android:id="@+id/stream"
+        android:background="@android:color/black"/>
 
 </LinearLayout>

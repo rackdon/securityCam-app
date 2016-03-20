@@ -9,8 +9,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="app.rackdon.com.securitycam.MainActivity"
-    tools:showIn="@layout/activity_main"
+    tools:context=".StreamActivity"
+    tools:showIn="@layout/activity_stream"
     android:weightSum="1"
     android:orientation="vertical"
     android:id="@+id/mainLinear">
@@ -30,7 +30,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
-        android:text="Start"
+        android:text="@string/startStream"
         android:id="@+id/changeableButton"
         android:onClick="startStop"
         android:layout_alignParentBottom="true"
@@ -40,7 +40,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.1"
         android:onClick="screenshot"
-        android:text="Screenshot"
+        android:text="@string/screenshot"
         android:id="@+id/screenshotButton"/>
 
 </LinearLayout>
