@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import app.rackdon.com.securitycam.R;
-import app.rackdon.com.securitycam.StreamActivity;
 import app.rackdon.com.securitycam.stream.DoRead;
 import app.rackdon.com.securitycam.stream.MjpegInputStream;
 import app.rackdon.com.securitycam.stream.MjpegView;
@@ -50,7 +49,6 @@ public class StreamFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_stream, container, false);
-
         ButterKnife.inject(this, rootView);
 
         return rootView;
@@ -68,9 +66,10 @@ public class StreamFragment extends Fragment {
     }
 
     public void start() {
-        // Write the correct ip of your local conection.
-        // The port (8081) must not be changed
-        String URL = "http://192.168.1.108:8081";
+        final String IP = this.getActivity().getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
+                .getString("Url", "");
+        final String PORT = ":8081";
+        final String URL = "http://" + IP + PORT;
 
         DoRead.DoReadCallback callback = new DoRead.DoReadCallback() {
             @Override
@@ -92,7 +91,6 @@ public class StreamFragment extends Fragment {
         };
 
         new DoRead(callback).execute(URL);
-
     }
 
     public AlertDialog.Builder createDialog(Context context) {
@@ -110,5 +108,4 @@ public class StreamFragment extends Fragment {
     public Bitmap takeScreenshot() {
         return mv.takeScreenshotImage();
     }
-
 }
