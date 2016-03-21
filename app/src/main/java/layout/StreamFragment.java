@@ -35,10 +35,15 @@ public class StreamFragment extends Fragment {
     }
     public static StreamFragment newInstance(Context context, String value) {
         StreamFragment streamFragment = new StreamFragment();
+        streamFragment.setContext(context);
         Bundle bundle = new Bundle();
         bundle.putString("key", value);
         streamFragment.setArguments(bundle);
         return streamFragment;
+    }
+
+    private void setContext (Context context) {
+        this.context = context;
     }
 
     @Override
