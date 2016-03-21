@@ -27,11 +27,6 @@ public class StreamFragment extends Fragment {
     private boolean showFps = false;
     private Context context;
 
-    public StreamFragment(Context context) {
-        this.context = context;
-        mv = new MjpegView(context);
-    }
-
     public StreamFragment() {
         // Required empty public constructor
     }
@@ -40,11 +35,21 @@ public class StreamFragment extends Fragment {
         return newInstance(context, "Default Value");
     }
     public static StreamFragment newInstance(Context context, String value) {
-        StreamFragment fragment = new StreamFragment(context);
+        StreamFragment fragment = new StreamFragment();
+        fragment.setContext(context);
+        fragment.instantiateMjpegView();
         Bundle args = new Bundle();
         args.putString("key", value);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    private void setContext (Context context) {
+        this.context = context;
+    }
+
+    private void instantiateMjpegView () {
+        mv = new MjpegView(context);
     }
 
     @Override
@@ -101,11 +106,11 @@ public class StreamFragment extends Fragment {
                 .setTitle("There is no video in the server")
                 .setMessage("Please ensure you have the correct server url and the server is on")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
     }
 
     public Bitmap takeScreenshot() {
