@@ -68,7 +68,6 @@ public class StreamFragment extends Fragment {
         mv.setBackgroundColor(Color.BLACK);
     }
 
-
     public void start() {
         // Write the correct ip of your local conection.
         // The port (8081) must not be changed
@@ -86,20 +85,21 @@ public class StreamFragment extends Fragment {
             }
 
             @Override
-            public void onError(String errorMsg) {
-                Log.wtf("Error", errorMsg);
+            public void onError(String e) {
+                Log.wtf("Error", e);
                 AlertDialog.Builder dialog = createDialog(context);
                 dialog.show();
             }
         };
 
-        new DoRead(callback, context).execute(URL);
+        new DoRead(callback).execute(URL);
 
     }
 
     public AlertDialog.Builder createDialog(Context context) {
         return new AlertDialog.Builder(context)
                 .setTitle("There is no video in the server")
+                .setMessage("Please ensure you have the correct server url and the server is on")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
