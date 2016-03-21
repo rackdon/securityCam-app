@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SecurityCam</string>
-    <string name="title_activity_main">Security Cam</string>
+    <string name="title_activity_stream">Video</string>
+    <string name="title_activity_configuration">Configuration</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
