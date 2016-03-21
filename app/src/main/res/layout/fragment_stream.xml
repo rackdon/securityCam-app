@@ -5,11 +5,9 @@
     tools:context=".StreamActivity"
     android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <app.rackdon.com.securitycam.stream.MjpegView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/stream"
-        android:background="@android:color/black"/>
+        android:id="@+id/stream" />
 
 </LinearLayout>

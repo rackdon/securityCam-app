@@ -22,8 +22,7 @@ import butterknife.InjectView;
 
 
 public class StreamFragment extends Fragment {
-    @InjectView( R.id.stream )
-    MjpegView mv;
+    @InjectView( R.id.stream ) MjpegView mv;
     private boolean showFps = false;
     private Context context;
 
@@ -35,21 +34,11 @@ public class StreamFragment extends Fragment {
         return newInstance(context, "Default Value");
     }
     public static StreamFragment newInstance(Context context, String value) {
-        StreamFragment fragment = new StreamFragment();
-        fragment.setContext(context);
-        fragment.instantiateMjpegView();
-        Bundle args = new Bundle();
-        args.putString("key", value);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    private void setContext (Context context) {
-        this.context = context;
-    }
-
-    private void instantiateMjpegView () {
-        mv = new MjpegView(context);
+        StreamFragment streamFragment = new StreamFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("key", value);
+        streamFragment.setArguments(bundle);
+        return streamFragment;
     }
 
     @Override
@@ -57,7 +46,7 @@ public class StreamFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_stream, container, false);
 
-        ButterKnife.inject(StreamActivity.class, rootView);
+        ButterKnife.inject(this, rootView);
 
         return rootView;
     }
@@ -76,7 +65,7 @@ public class StreamFragment extends Fragment {
     public void start() {
         // Write the correct ip of your local conection.
         // The port (8081) must not be changed
-        String URL = "http://192.168.1.149:8081";
+        String URL = "http://192.168.1.108:8081";
 
         DoRead.DoReadCallback callback = new DoRead.DoReadCallback() {
             @Override

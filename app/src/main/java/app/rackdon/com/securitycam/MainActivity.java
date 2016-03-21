@@ -14,7 +14,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void videoActivity(View view) {
+        //TODO check if the url have been stablished
         Intent intent = new Intent(this, StreamActivity.class);
+        startActivity(intent);
+    }
+
+    public void configurationActivity(View view) {
+        Intent intent = new Intent(this, ConfigurationActivity.class);
         startActivity(intent);
     }
 }
