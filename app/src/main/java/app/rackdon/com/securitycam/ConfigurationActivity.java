@@ -47,6 +47,8 @@ public class ConfigurationActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
         inputUrl.setLayoutParams(lp);
+        inputUrl.setHint(getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
+                .getString("Url", ""));
         dialog.setView(inputUrl);
     }
 

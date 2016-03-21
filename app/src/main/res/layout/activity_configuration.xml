@@ -14,13 +14,13 @@
         android:layout_height="wrap_content"
         android:text="Url"
         android:id="@+id/url"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="96dp"
-        android:layout_alignLeft="@+id/resetDDBB"
-        android:layout_alignStart="@+id/resetDDBB"
-        android:layout_alignRight="@+id/resetDDBB"
-        android:layout_alignEnd="@+id/resetDDBB"
-        android:onClick="setUrl"/>
+        android:onClick="setUrl"
+        android:layout_marginBottom="58dp"
+        android:layout_above="@+id/notifications"
+        android:layout_alignLeft="@+id/notifications"
+        android:layout_alignStart="@+id/notifications"
+        android:layout_alignRight="@+id/notifications"
+        android:layout_alignEnd="@+id/notifications" />
 
     <Button
         android:layout_width="wrap_content"
@@ -28,18 +28,18 @@
         android:text="Notifications"
         android:id="@+id/notifications"
         android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/resetDDBB"
-        android:layout_alignStart="@+id/resetDDBB"
-        android:layout_alignRight="@+id/resetDDBB"
-        android:layout_alignEnd="@+id/resetDDBB" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Reset database"
         android:id="@+id/resetDDBB"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="123dp" />
+        android:layout_below="@+id/notifications"
+        android:layout_marginTop="61dp"
+        android:layout_alignLeft="@+id/notifications"
+        android:layout_alignStart="@+id/notifications"
+        android:layout_alignRight="@+id/notifications"
+        android:layout_alignEnd="@+id/notifications" />
 
 </RelativeLayout>
