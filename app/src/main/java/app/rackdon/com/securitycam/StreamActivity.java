@@ -1,22 +1,17 @@
 package app.rackdon.com.securitycam;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import app.rackdon.com.securitycam.dialogs.Dialogs;
 import app.rackdon.com.securitycam.screenshot.Screenshot;
+import app.rackdon.com.securitycam.utils.UtilsCommon;
 import layout.StreamFragment;
 
 public class StreamActivity extends AppCompatActivity {
@@ -47,12 +42,11 @@ public class StreamActivity extends AppCompatActivity {
     }
 
     public void startStop(View v){
-        if ( isConnection() ) {
+        if ( new UtilsCommon().isConnection(this) ) {
             changeButton();
         }
         else {
-            AlertDialog.Builder dialog = createDialog();
-            dialog.show();
+            new Dialogs(this).createConnectionDialog().show();
         }
     }
 
@@ -81,25 +75,6 @@ public class StreamActivity extends AppCompatActivity {
 
             frameLayout.getLayoutParams().height = 0;
         }
-    }
-
-    public boolean isConnection(){
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        return networkInfo != null && networkInfo.isConnected();
-    }
-
-    public AlertDialog.Builder createDialog(){
-        return new AlertDialog.Builder(this)
-            .setTitle("Unable to connect")
-            .setMessage("Please check your Internet connection")
-            .setPositiveButton("Settings", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    startActivity(new Intent(Settings.ACTION_SETTINGS));
-                }
-        });
     }
 
     public void changeButton() {

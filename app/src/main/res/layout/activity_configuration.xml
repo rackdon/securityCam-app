@@ -35,6 +35,7 @@
         android:layout_height="wrap_content"
         android:text="Reset database"
         android:id="@+id/resetDDBB"
+        android:onClick="resetDB"
         android:layout_below="@+id/notifications"
         android:layout_marginTop="61dp"
         android:layout_alignLeft="@+id/notifications"

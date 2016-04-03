@@ -12,7 +12,6 @@ public class NotificationService extends IntentService {
     private String SERVERIP;
     private final String SERVERPORT = "8082";
     private IOSocket ioSocket;
-    private Notification notification;
 
     public NotificationService() {
         super("NotificationService");
