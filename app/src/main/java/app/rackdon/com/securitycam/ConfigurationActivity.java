@@ -46,9 +46,7 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
     public void startService() {
-        Intent intent = new Intent(this, NotificationService.class);
-        intent.putExtra("url", getSharedPreferences("SecurityCam", Context.MODE_PRIVATE).getString("Url", ""));
-        startService(intent);
+        startService(new Intent(this, NotificationService.class));
     }
 
     public void resetDB(View view) {
@@ -57,10 +55,6 @@ public class ConfigurationActivity extends AppCompatActivity {
         } else {
             dialogs.createConnectionDialog().show();
         }
-    }
-
-    public void resetDBcall() {
-
     }
 
     // FOR STOP THE NOTIFICATION SERVICE

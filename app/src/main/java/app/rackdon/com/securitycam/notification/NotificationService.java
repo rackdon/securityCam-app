@@ -2,7 +2,9 @@ package app.rackdon.com.securitycam.notification;
 
 
 import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import app.rackdon.com.securitycam.socket.IOSocket;
 import io.socket.client.IO;
@@ -20,7 +22,8 @@ public class NotificationService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        SERVERIP = (String) intent.getExtras().get("url");
+        SERVERIP = this.getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
+                .getString("Url", "");
         IO.Options options = ioSocket.addOptions();
         Socket socket = ioSocket.createSocket(SERVERIP, SERVERPORT, options);
         ioSocket.connect(socket);
