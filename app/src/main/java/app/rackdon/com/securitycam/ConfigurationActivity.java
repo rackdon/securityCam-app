@@ -3,11 +3,14 @@ package app.rackdon.com.securitycam;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import app.rackdon.com.securitycam.notification.NotificationService;
 
 public class ConfigurationActivity extends AppCompatActivity {
     EditText inputUrl;
@@ -53,8 +56,24 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
     public void saveUrl(String url) {
+        url = containsHTTP(url) ? url : "http://" + url;
+
         getSharedPreferences("SecurityCam", Context.MODE_PRIVATE).edit()
                 .putString("Url", url)
                 .commit();
+        startService();
     }
+
+    public boolean containsHTTP(String url) {
+        return url.startsWith("http://");
+    }
+
+    public void startService() {
+        Intent intent = new Intent(this, NotificationService.class);
+        intent.putExtra("url", getSharedPreferences("SecurityCam", Context.MODE_PRIVATE).getString("Url", ""));
+        startService(intent);
+    }
+
+    // FOR STOP THE NOTIFICATION SERVICE
+    // stopService(new Intent(this, NotificationService.class)
 }

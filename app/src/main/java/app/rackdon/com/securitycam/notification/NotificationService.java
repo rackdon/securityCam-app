@@ -1,52 +1,29 @@
 package app.rackdon.com.securitycam.notification;
 
 
-import android.app.Service;
+import android.app.IntentService;
 import android.content.Intent;
-import android.os.IBinder;
-import android.util.Log;
 
-public class NotificationService extends Service{
-    // Write the correct ip of your local conection in SERVERIP
-    private final String SERVERIP = "192.168.1.149";
+import app.rackdon.com.securitycam.socket.IOSocket;
+import io.socket.client.IO;
+import io.socket.client.Socket;
+
+public class NotificationService extends IntentService {
+    private String SERVERIP;
     private final String SERVERPORT = "8082";
-    private NotificationThread notificationThread;
+    private IOSocket ioSocket;
+    private Notification notification;
 
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
+    public NotificationService() {
+        super("NotificationService");
+        ioSocket = new IOSocket(new Notification(this));
     }
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        Log.wtf("Service", "Creating service");
+    protected void onHandleIntent(Intent intent) {
+        SERVERIP = (String) intent.getExtras().get("url");
+        IO.Options options = ioSocket.addOptions();
+        Socket socket = ioSocket.createSocket(SERVERIP, SERVERPORT, options);
+        ioSocket.connect(socket);
     }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        super.onStartCommand(intent, flags, startId);
-        Log.wtf("On start service", "Intent received");
-        notificationThread = new NotificationThread(this);
-        notificationThread.execute(SERVERIP, SERVERPORT);
-
-        return START_STICKY;
-    }
-
-    @Override
-    public void onDestroy() {
-        //App.getInstance().cancelPendingRequests(getClass().getSimpleName());
-        super.onDestroy();
-        //Write here the stops of the sockets/thread
-        Log.wtf("On destroy service", "Destroying the service");
-
-        try {
-            notificationThread.cancel(true);
-        }
-        catch (Exception e) {
-            Log.wtf("Close Socket", "Impossible");
-        }
-    }
-
 }

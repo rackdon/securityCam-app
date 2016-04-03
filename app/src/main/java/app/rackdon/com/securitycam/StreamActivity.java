@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import app.rackdon.com.securitycam.notification.NotificationService;
 import app.rackdon.com.securitycam.screenshot.Screenshot;
 import layout.StreamFragment;
 
@@ -35,9 +34,6 @@ public class StreamActivity extends AppCompatActivity {
                 .commit();
 
         changeableButton = (Button) findViewById(R.id.changeableButton);
-
-        Intent serverService = new Intent(this, NotificationService.class);
-        startService(serverService);
     }
 
     @Override

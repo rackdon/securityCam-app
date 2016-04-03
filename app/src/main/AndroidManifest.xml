@@ -31,6 +31,8 @@
             android:name=".ConfigurationActivity"
             android:label="@string/title_activity_configuration"/>
 
+        <service android:name=".notification.NotificationService"/>
+
     </application>
 
 </manifest>

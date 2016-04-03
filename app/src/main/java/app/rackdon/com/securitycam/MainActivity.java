@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import app.rackdon.com.securitycam.notification.NotificationService;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -17,12 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void videoActivity(View view) {
-        if (hasUrl()) {
             startActivity(new Intent(this, StreamActivity.class));
-        }
-        else {
-            createUrlDialog(this).show();
-        }
     }
 
     public void configurationActivity(View view) {
@@ -31,13 +28,14 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean hasUrl() {
         String url = getSharedPreferences("SecurityCam", Context.MODE_PRIVATE).getString("Url", "");
-        return !url.equals("") ? true : false;
+
+        return !url.equals("") && !url.equals("http://")? true : false;
     }
 
     public AlertDialog.Builder createUrlDialog(final Context context) {
         return new AlertDialog.Builder(context)
                 .setTitle("Url needed")
-                .setMessage("Please set the Url")
+                .setMessage("Please set the Url server")
                 .setPositiveButton("Configuration", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -50,5 +48,13 @@ public class MainActivity extends AppCompatActivity {
                         dialog.cancel();
                     }
                 });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(!hasUrl()) {
+            createUrlDialog(this).show();
+        }
     }
 }
