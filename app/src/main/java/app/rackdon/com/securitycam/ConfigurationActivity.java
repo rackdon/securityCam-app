@@ -11,11 +11,13 @@ import android.widget.EditText;
 import app.rackdon.com.securitycam.dialogs.Dialogs;
 import app.rackdon.com.securitycam.notification.NotificationService;
 import app.rackdon.com.securitycam.utils.UtilsCommon;
+import layout.PortsFragment;
 
 public class ConfigurationActivity extends AppCompatActivity {
     private EditText inputUrl;
     private Dialogs dialogs;
     private UtilsCommon utils;
+    private View portsView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,13 @@ public class ConfigurationActivity extends AppCompatActivity {
 
         dialogs = new Dialogs(this);
         utils = new UtilsCommon();
+
+        portsView = findViewById(R.id.containerPortsFragment);
+        portsView.setVisibility(View.INVISIBLE);
+        PortsFragment portsFragment = PortsFragment.newInstance();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.containerPortsFragment, portsFragment, "portsFragment")
+                .commit();
     }
 
     public void setUrl(View view) {
@@ -55,6 +64,16 @@ public class ConfigurationActivity extends AppCompatActivity {
         } else {
             dialogs.createConnectionDialog().show();
         }
+    }
+
+    public void showPortsFragment(View view) {
+        Dialogs.CreateWarningDialogCallback callback = new Dialogs.CreateWarningDialogCallback() {
+            @Override
+            public void showFragment() {
+                portsView.setVisibility(View.VISIBLE);
+            }
+        };
+        dialogs.createWarningDialog(callback).show();
     }
 
     // FOR STOP THE NOTIFICATION SERVICE

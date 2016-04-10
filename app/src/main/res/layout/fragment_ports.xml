@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="layout.PortsFragment"
+    android:visibility="visible"
+    android:id="@+id/portsFragment">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Server Port"
+        android:id="@+id/serverPort"
+        android:layout_gravity="center"
+        android:layout_marginTop="31dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextServer"
+        android:layout_gravity="center"
+        android:layout_alignBottom="@+id/serverPort"
+        android:layout_alignLeft="@+id/serverPort"
+        android:layout_marginStart="140dp"
+        android:layout_marginLeft="140dp"
+        android:background="@android:color/transparent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Motion Port"
+        android:id="@+id/motionPort"
+        android:layout_below="@+id/editTextServer"
+        android:layout_alignLeft="@+id/serverPort"
+        android:layout_alignStart="@+id/serverPort"
+        android:layout_marginTop="30dp" />
+
+    <EditText
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editTextMotion"
+        android:layout_alignBottom="@+id/motionPort"
+        android:layout_alignLeft="@+id/editTextServer"
+        android:layout_alignStart="@+id/editTextServer"
+        android:background="@android:color/transparent"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/saveBt"
+        android:layout_below="@+id/motionPort"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

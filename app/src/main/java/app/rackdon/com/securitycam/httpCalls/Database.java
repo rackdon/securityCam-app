@@ -12,11 +12,13 @@ import java.net.URL;
 public class Database {
     private final String TAG = "Database request";
     private String SERVERIP;
-    private String PORT = "8082";
+    private String PORT;
 
     public Database(Context context) {
         SERVERIP = context.getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
                 .getString("Url", "");
+        PORT = context.getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
+                .getString("ServerPort", "8082");
     }
 
     public void resetDatabase() {

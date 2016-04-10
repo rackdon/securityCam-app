@@ -68,8 +68,9 @@ public class StreamFragment extends Fragment {
     public void start() {
         final String IP = this.getActivity().getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
                 .getString("Url", "");
-        final String PORT = ":8081";
-        final String URL = IP + PORT;
+        final String PORT = this.getActivity().getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
+                .getString("MotionPort", "8081");
+        final String URL = IP + ":" + PORT;
 
         DoRead.DoReadCallback callback = new DoRead.DoReadCallback() {
             @Override

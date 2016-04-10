@@ -15,19 +15,25 @@
         android:text="Url"
         android:id="@+id/url"
         android:onClick="setUrl"
-        android:layout_marginBottom="58dp"
-        android:layout_above="@+id/notifications"
-        android:layout_alignLeft="@+id/notifications"
-        android:layout_alignStart="@+id/notifications"
-        android:layout_alignRight="@+id/notifications"
-        android:layout_alignEnd="@+id/notifications" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ports"
+        android:id="@+id/ports"
+        android:layout_below="@+id/url"
+        android:layout_centerHorizontal="true"
+        android:onClick="showPortsFragment"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Notifications"
         android:id="@+id/notifications"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/ports"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -37,10 +43,23 @@
         android:id="@+id/resetDDBB"
         android:onClick="resetDB"
         android:layout_below="@+id/notifications"
-        android:layout_marginTop="61dp"
         android:layout_alignLeft="@+id/notifications"
         android:layout_alignStart="@+id/notifications"
         android:layout_alignRight="@+id/notifications"
         android:layout_alignEnd="@+id/notifications" />
+
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/containerPortsFragment"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/resetDDBB" />
+
 
 </RelativeLayout>

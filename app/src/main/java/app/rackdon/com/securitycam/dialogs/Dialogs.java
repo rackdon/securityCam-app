@@ -8,14 +8,15 @@ import android.provider.Settings;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import app.rackdon.com.securitycam.R;
 import app.rackdon.com.securitycam.httpCalls.Database;
+import layout.PortsFragment;
 
 /**
  * Created by Rackdon on 3/4/16.
  */
 public class Dialogs {
     private Context context;
-    private CreateUrlDialogCallback createUrlDialogCallback;
 
     public Dialogs(Context context) {
         this.context = context;
@@ -51,14 +52,32 @@ public class Dialogs {
                 });
     }
 
-    public AlertDialog.Builder createUrlDialog(CreateUrlDialogCallback callback){
-        createUrlDialogCallback = callback;
+    public AlertDialog.Builder createUrlDialog(final CreateUrlDialogCallback callback){
         return new AlertDialog.Builder(context)
                 .setTitle("Url")
                 .setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        createUrlDialogCallback.saveUrl();
+                        callback.saveUrl();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+    }
+
+    public AlertDialog.Builder createWarningDialog(final CreateWarningDialogCallback callback) {
+        return new AlertDialog.Builder(context)
+                .setTitle("WARNING!!!")
+                .setMessage("Modify this values can cause application problems. " +
+                        "Make changes under your own risk")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        callback.showFragment();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -84,5 +103,9 @@ public class Dialogs {
 
     public interface CreateUrlDialogCallback {
         void saveUrl();
+    }
+
+    public interface  CreateWarningDialogCallback {
+        void showFragment();
     }
 }
