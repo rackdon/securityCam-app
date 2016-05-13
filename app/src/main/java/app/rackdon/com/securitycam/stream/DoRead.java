@@ -1,13 +1,10 @@
 package app.rackdon.com.securitycam.stream;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
-import app.rackdon.com.securitycam.httpCalls.Stream;
+import app.rackdon.com.securitycam.httpCalls.GetStream;
 
 public class DoRead extends AsyncTask<String, Void, MjpegInputStream> {
     private DoReadCallback callback;
@@ -17,7 +14,7 @@ public class DoRead extends AsyncTask<String, Void, MjpegInputStream> {
     }
 
     protected MjpegInputStream doInBackground(String... myurl) {
-        InputStream inputStream = new Stream().getVideoStream(myurl[0]);
+        InputStream inputStream = new GetStream().getVideoStream(myurl[0]);
         return inputStream != null ? new MjpegInputStream(inputStream) : null;
     }
 
@@ -25,7 +22,7 @@ public class DoRead extends AsyncTask<String, Void, MjpegInputStream> {
         if (result != null)
             callback.onFinish(result);
         else
-            callback.onError( "NULL Mjpeg Input Stream" );
+            callback.onError( "NULL Mjpeg Input GetStream" );
     }
 
     public interface DoReadCallback{

@@ -9,7 +9,7 @@ import java.net.URL;
 /**
  * Created by Rackdon on 3/4/16.
  */
-public class Stream {
+public class GetStream {
     private final String TAG = "MjpegActivity";
 
     public InputStream getVideoStream(String Url) {

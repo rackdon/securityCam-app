@@ -8,9 +8,7 @@ import android.provider.Settings;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import app.rackdon.com.securitycam.R;
-import app.rackdon.com.securitycam.httpCalls.Database;
-import layout.PortsFragment;
+import app.rackdon.com.securitycam.httpCalls.DeletePictures;
 
 /**
  * Created by Rackdon on 3/4/16.
@@ -24,12 +22,12 @@ public class Dialogs {
 
     public AlertDialog.Builder createResetDbDialog(){
         return new AlertDialog.Builder(context)
-                .setTitle("Reset Database")
+                .setTitle("Reset DeletePictures")
                 .setMessage("WARNING: This changes can not be undone")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        new Database(context).resetDatabase();
+                        new DeletePictures(context).execute();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
