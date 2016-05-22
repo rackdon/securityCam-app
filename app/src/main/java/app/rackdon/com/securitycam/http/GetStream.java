@@ -1,4 +1,4 @@
-package app.rackdon.com.securitycam.httpCalls;
+package app.rackdon.com.securitycam.http;
 
 import android.util.Log;
 

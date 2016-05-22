@@ -16,12 +16,12 @@ import app.rackdon.com.securitycam.R;
 import app.rackdon.com.securitycam.stream.DoRead;
 import app.rackdon.com.securitycam.stream.MjpegInputStream;
 import app.rackdon.com.securitycam.stream.MjpegView;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 
 public class StreamFragment extends Fragment {
-    @InjectView( R.id.stream ) MjpegView mv;
+    @BindView( R.id.stream ) MjpegView mv;
     private boolean showFps = false;
     private Context context;
 
@@ -49,7 +49,7 @@ public class StreamFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_stream, container, false);
-        ButterKnife.inject(this, rootView);
+        ButterKnife.bind(this, rootView);
 
         return rootView;
     }

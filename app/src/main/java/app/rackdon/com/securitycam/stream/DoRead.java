@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 
 import java.io.InputStream;
 
-import app.rackdon.com.securitycam.httpCalls.GetStream;
+import app.rackdon.com.securitycam.http.GetStream;
 
 public class DoRead extends AsyncTask<String, Void, MjpegInputStream> {
     private DoReadCallback callback;

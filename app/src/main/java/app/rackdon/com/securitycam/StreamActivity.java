@@ -12,23 +12,26 @@ import android.widget.Toast;
 import app.rackdon.com.securitycam.dialogs.Dialogs;
 import app.rackdon.com.securitycam.screenshot.Screenshot;
 import app.rackdon.com.securitycam.utils.UtilsCommon;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import layout.StreamFragment;
 
 public class StreamActivity extends AppCompatActivity {
     private StreamFragment streamFragment;
-    private Button changeableButton;
+    @BindView(R.id.changeableButton) Button changeableButton;
+    @BindView(R.id.container) FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stream);
+        ButterKnife.bind(this);
 
         streamFragment = StreamFragment.newInstance(this);
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container, streamFragment)
                 .commit();
 
-        changeableButton = (Button) findViewById(R.id.changeableButton);
     }
 
     @Override
@@ -66,7 +69,6 @@ public class StreamActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.container);
         // Checks the orientation of the screen
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             frameLayout.getLayoutParams().height = -1;

@@ -11,15 +11,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import app.rackdon.com.securitycam.R;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 
 public class PortsFragment extends Fragment implements View.OnClickListener{
 
-    @InjectView(R.id.saveBt) Button saveBt;
-    @InjectView(R.id.editTextMotion) EditText motionET;
-    @InjectView(R.id.editTextServer) EditText serverET;
+    @BindView(R.id.saveBt) Button saveBt;
+    @BindView(R.id.editTextMotion) EditText motionET;
+    @BindView(R.id.editTextServer) EditText serverET;
     private ViewGroup fragmentView;
 
     public PortsFragment() {
@@ -50,7 +50,7 @@ public class PortsFragment extends Fragment implements View.OnClickListener{
                 .getString("ServerPort", "8082");
 
         View rootView = inflater.inflate(R.layout.fragment_ports, container, false);
-        ButterKnife.inject(this, rootView);
+        ButterKnife.bind(this, rootView);
         saveBt.setOnClickListener(this);
         fragmentView = container;
         motionET.setText(motionPort);

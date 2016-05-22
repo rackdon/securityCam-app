@@ -8,7 +8,7 @@ import android.provider.Settings;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import app.rackdon.com.securitycam.httpCalls.DeletePictures;
+import app.rackdon.com.securitycam.http.DeletePictures;
 
 /**
  * Created by Rackdon on 3/4/16.

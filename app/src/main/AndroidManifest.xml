@@ -12,7 +12,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,19 +19,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".StreamActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_stream"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ConfigurationActivity"
-            android:label="@string/title_activity_configuration"/>
+            android:label="@string/title_activity_configuration" />
 
-        <service android:name=".notification.NotificationService"/>
+        <service android:name=".notification.NotificationService" />
 
+        <activity
+            android:name=".ImageDownloadActivity"
+            android:label="@string/title_activity_image_download" />
+        <activity android:name=".PicturesActivity"></activity>
     </application>
 
 </manifest>

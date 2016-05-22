@@ -1,4 +1,4 @@
-package app.rackdon.com.securitycam.httpCalls;
+package app.rackdon.com.securitycam.http;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -13,9 +13,10 @@ import java.net.URL;
  */
 public class DeletePictures extends AsyncTask<String, Void, Integer>{
     private Context context;
-    private final String TAG = "DeletePictures request";
+    private final String TAG = "DELETE /pictures";
     private String SERVERIP;
     private String PORT;
+    private final String ROUTE = "/pictures";
 
     public DeletePictures(Context context) {
         this.context = context;
@@ -46,7 +47,7 @@ public class DeletePictures extends AsyncTask<String, Void, Integer>{
         HttpURLConnection connection = null;
         Log.wtf(TAG, "1. Sending http request");
         try {
-            URL url = new URL(SERVERIP + ":" + PORT + "/pictures");
+            URL url = new URL(SERVERIP + ":" + PORT + ROUTE);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("DELETE");
             connection.connect();

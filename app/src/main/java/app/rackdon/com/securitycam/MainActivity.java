@@ -19,7 +19,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void videoActivity(View view) {
-            startActivity(new Intent(this, StreamActivity.class));
+        startActivity(new Intent(this, StreamActivity.class));
+    }
+
+    public void imageDownloadActivity(View view) {
+        startActivity(new Intent(this, ImageDownloadActivity.class));
     }
 
     public void configurationActivity(View view) {

@@ -11,23 +11,25 @@ import android.widget.EditText;
 import app.rackdon.com.securitycam.dialogs.Dialogs;
 import app.rackdon.com.securitycam.notification.NotificationService;
 import app.rackdon.com.securitycam.utils.UtilsCommon;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import layout.PortsFragment;
 
 public class ConfigurationActivity extends AppCompatActivity {
+    @BindView(R.id.containerPortsFragment) View portsView;
     private EditText inputUrl;
     private Dialogs dialogs;
     private UtilsCommon utils;
-    private View portsView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
+        ButterKnife.bind(this);
 
         dialogs = new Dialogs(this);
         utils = new UtilsCommon();
 
-        portsView = findViewById(R.id.containerPortsFragment);
         portsView.setVisibility(View.INVISIBLE);
         PortsFragment portsFragment = PortsFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
