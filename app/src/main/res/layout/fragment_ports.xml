@@ -34,34 +34,13 @@
         android:layout_marginLeft="140dp"
         android:background="@android:color/transparent"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Motion Port"
-        android:id="@+id/motionPort"
-        android:layout_below="@+id/editTextServer"
-        android:layout_alignLeft="@+id/serverPort"
-        android:layout_alignStart="@+id/serverPort"
-        android:layout_marginTop="30dp" />
-
-    <EditText
-        android:layout_width="55dp"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editTextMotion"
-        android:layout_alignBottom="@+id/motionPort"
-        android:layout_alignLeft="@+id/editTextServer"
-        android:layout_alignStart="@+id/editTextServer"
-        android:background="@android:color/transparent"/>
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/saveBt"
-        android:layout_below="@+id/motionPort"
-        android:layout_centerInParent="true"/>
+        android:layout_below="@+id/editTextServer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
 
 </RelativeLayout>

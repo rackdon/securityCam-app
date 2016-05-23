@@ -1,7 +1,10 @@
 package app.rackdon.com.securitycam.http;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -25,5 +28,27 @@ public class GetStream {
             Log.wtf(TAG, "Request failed", e);
         }
         return null;
+    }
+
+    public Bitmap getPictureStream(String Url) throws IOException{
+        int responseCode;
+        InputStream is = null;
+        HttpURLConnection connection = null;
+        Log.wtf(TAG, "1. Sending http request");
+        try {
+            URL url = new URL(Url);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+            responseCode = connection.getResponseCode();
+            Log.i("Response", "The response code is: " + responseCode);
+            is = connection.getInputStream();
+            return BitmapFactory.decodeStream(is);
+        } finally {
+            if(is != null) {
+                is.close();
+            }
+            connection.disconnect();
+        }
     }
 }

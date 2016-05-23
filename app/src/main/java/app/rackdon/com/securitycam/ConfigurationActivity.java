@@ -69,13 +69,15 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
     public void showPortsFragment(View view) {
-        Dialogs.CreateWarningDialogCallback callback = new Dialogs.CreateWarningDialogCallback() {
-            @Override
-            public void showFragment() {
-                portsView.setVisibility(View.VISIBLE);
-            }
-        };
-        dialogs.createWarningDialog(callback).show();
+        if(portsView.getVisibility() == View.INVISIBLE) {
+            Dialogs.CreateWarningDialogCallback callback = new Dialogs.CreateWarningDialogCallback() {
+                @Override
+                public void showFragment() {
+                    portsView.setVisibility(View.VISIBLE);
+                }
+            };
+            dialogs.createWarningDialog(callback).show();
+        }
     }
 
     // FOR STOP THE NOTIFICATION SERVICE

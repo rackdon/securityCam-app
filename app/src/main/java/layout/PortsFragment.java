@@ -18,7 +18,6 @@ import butterknife.ButterKnife;
 public class PortsFragment extends Fragment implements View.OnClickListener{
 
     @BindView(R.id.saveBt) Button saveBt;
-    @BindView(R.id.editTextMotion) EditText motionET;
     @BindView(R.id.editTextServer) EditText serverET;
     private ViewGroup fragmentView;
 
@@ -44,8 +43,6 @@ public class PortsFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        final String motionPort = this.getActivity().getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
-                .getString("MotionPort", "8081");
         final String serverPort = this.getActivity().getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
                 .getString("ServerPort", "8082");
 
@@ -53,7 +50,6 @@ public class PortsFragment extends Fragment implements View.OnClickListener{
         ButterKnife.bind(this, rootView);
         saveBt.setOnClickListener(this);
         fragmentView = container;
-        motionET.setText(motionPort);
         serverET.setText(serverPort);
         return rootView;
     }
@@ -70,7 +66,6 @@ public class PortsFragment extends Fragment implements View.OnClickListener{
 
     public void savePorts() {
         this.getActivity().getSharedPreferences("SecurityCam", Context.MODE_PRIVATE).edit()
-                .putString("MotionPort", motionET.getText().toString())
                 .putString("ServerPort", serverET.getText().toString())
                 .commit();
         fragmentView.setVisibility(View.INVISIBLE);

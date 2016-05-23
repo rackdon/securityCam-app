@@ -1,13 +1,13 @@
 package app.rackdon.com.securitycam;
 
 import android.graphics.Bitmap;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import app.rackdon.com.securitycam.http.GetPicture;
+import app.rackdon.com.securitycam.pictures.Picture;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -26,10 +26,10 @@ public class PicturesActivity extends AppCompatActivity {
         imageType = getIntent().getStringExtra("IMAGE_TYPE");
         imageView.setVisibility(View.INVISIBLE);
         textView.setVisibility(View.INVISIBLE);
-        new GetPicture(this, callback).execute(unixDate.toString(), imageType);
+        new Picture(this, callback).execute(unixDate.toString(), imageType);
     }
 
-    GetPicture.GetPictureCallback callback = new GetPicture.GetPictureCallback() {
+    Picture.GetPictureCallback callback = new Picture.GetPictureCallback() {
         @Override
         public void onFinish(Bitmap b) {
             imageView.setImageBitmap(b);

@@ -69,8 +69,9 @@ public class StreamFragment extends Fragment {
         final String IP = this.getActivity().getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
                 .getString("Url", "");
         final String PORT = this.getActivity().getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
-                .getString("MotionPort", "8081");
-        final String URL = IP + ":" + PORT;
+                .getString("ServerPort", "8082");
+        final String ROUTE = "/video/motion";
+        final String URL = IP + ":" + PORT + ROUTE;
 
         DoRead.DoReadCallback callback = new DoRead.DoReadCallback() {
             @Override
@@ -96,7 +97,7 @@ public class StreamFragment extends Fragment {
 
     public AlertDialog.Builder createDialog(Context context) {
         return new AlertDialog.Builder(context)
-                .setTitle("There is no video in the server")
+                .setTitle("There is no video to display")
                 .setMessage("Please ensure you have the correct server url and the server is on")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
