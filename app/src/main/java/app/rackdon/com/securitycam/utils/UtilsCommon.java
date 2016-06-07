@@ -35,4 +35,12 @@ public class UtilsCommon {
             return 0;
         }
     }
+
+    public String joinDateAsString(int ... args) {
+        String result = "";
+        for (int i = 0; i < args.length; i++) {
+            result += args[i] < 10 ? "0" + String.valueOf(args[i]) : String.valueOf((args[i]));
+        }
+        return result;
+    }
 }

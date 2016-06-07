@@ -63,9 +63,9 @@ public class ImageDownloadActivity extends AppCompatActivity {
     }
 
     public void Download(View view) {
-        Long unixDate = utilsCommon.getUnixTime(year, month, day, hour, min);
+        String date = utilsCommon.joinDateAsString(year, month, day, hour, min, 00);
         Intent intent = new Intent(this, PicturesActivity.class);
-        intent.putExtra("UNIX_DATE", unixDate);
+        intent.putExtra("DATE", date);
         intent.putExtra("IMAGE_TYPE", spinnerSelection);
         startActivity(intent);
     }

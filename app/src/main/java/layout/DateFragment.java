@@ -58,7 +58,7 @@ public class DateFragment extends Fragment implements View.OnClickListener{
                 fragmentView.setVisibility(View.INVISIBLE);
                 break;
             case R.id.okBT:
-                activity.setDate(datePicker.getMonth(), datePicker.getDayOfMonth(), datePicker.getYear());
+                activity.setDate(datePicker.getMonth() + 1, datePicker.getDayOfMonth(), datePicker.getYear());
                 fragmentView.setVisibility(View.INVISIBLE);
                 break;
         }

@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
 public class PicturesActivity extends AppCompatActivity {
     @BindView(R.id.imageView) ImageView imageView;
     @BindView(R.id.textView) TextView textView;
-    Long unixDate;
+    String date;
     String imageType;
 
     @Override
@@ -22,11 +22,11 @@ public class PicturesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pictures);
         ButterKnife.bind(this);
-        unixDate = getIntent().getLongExtra("UNIX_DATE", 0);
+        date = getIntent().getStringExtra("DATE");
         imageType = getIntent().getStringExtra("IMAGE_TYPE");
         imageView.setVisibility(View.INVISIBLE);
         textView.setVisibility(View.INVISIBLE);
-        new Picture(this, callback).execute(unixDate.toString(), imageType);
+        new Picture(this, callback).execute(date, imageType);
     }
 
     Picture.GetPictureCallback callback = new Picture.GetPictureCallback() {
