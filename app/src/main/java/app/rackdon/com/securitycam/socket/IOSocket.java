@@ -34,7 +34,10 @@ public class IOSocket {
     public IO.Options addOptions () {
         IO.Options opts = new IO.Options();
         opts.forceNew = false;
-        opts.reconnection = false;
+        opts.reconnection = true;
+        opts.reconnectionAttempts = 50;
+        opts.reconnectionDelay = 1000;
+        opts.reconnectionDelayMax = 10000;
         return opts;
     }
 

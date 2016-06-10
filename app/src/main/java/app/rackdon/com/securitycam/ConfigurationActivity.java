@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import app.rackdon.com.securitycam.dialogs.Dialogs;
 import app.rackdon.com.securitycam.notification.NotificationService;
@@ -15,11 +17,15 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import layout.PortsFragment;
 
-public class ConfigurationActivity extends AppCompatActivity {
-    @BindView(R.id.containerPortsFragment) View portsView;
+public class ConfigurationActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+    @BindView(R.id.containerPortsFragment)
+    View portsView;
+    @BindView(R.id.notificationsSwitch)
+    Switch notificationsSwitch;
     private EditText inputUrl;
     private Dialogs dialogs;
     private UtilsCommon utils;
+    private Intent notificationsIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +35,15 @@ public class ConfigurationActivity extends AppCompatActivity {
 
         dialogs = new Dialogs(this);
         utils = new UtilsCommon();
-
+        notificationsIntent = getNotificationsIntent();
         portsView.setVisibility(View.INVISIBLE);
         PortsFragment portsFragment = PortsFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.containerPortsFragment, portsFragment, "portsFragment")
                 .commit();
+        notificationsSwitch.setOnCheckedChangeListener(this);
+        notificationsSwitch.setChecked(getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
+                .getBoolean("Notifications", false));
     }
 
     public void setUrl(View view) {
@@ -47,7 +56,12 @@ public class ConfigurationActivity extends AppCompatActivity {
                 getSharedPreferences("SecurityCam", Context.MODE_PRIVATE).edit()
                         .putString("Url", url)
                         .commit();
-                startService();
+                if (getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
+                .getBoolean("Notifications", false)) {
+                    stopService();
+                    notificationsIntent = getNotificationsIntent();
+                    startService();
+                }
             }
         };
 
@@ -56,8 +70,16 @@ public class ConfigurationActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    public Intent getNotificationsIntent() {
+        return new Intent(this, NotificationService.class);
+    }
+
     public void startService() {
-        startService(new Intent(this, NotificationService.class));
+        startService(notificationsIntent);
+    }
+
+    public void stopService() {
+        stopService(notificationsIntent);
     }
 
     public void resetDB(View view) {
@@ -69,7 +91,7 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
     public void showPortsFragment(View view) {
-        if(portsView.getVisibility() == View.INVISIBLE) {
+        if (portsView.getVisibility() == View.INVISIBLE) {
             Dialogs.CreateWarningDialogCallback callback = new Dialogs.CreateWarningDialogCallback() {
                 @Override
                 public void showFragment() {
@@ -80,6 +102,21 @@ public class ConfigurationActivity extends AppCompatActivity {
         }
     }
 
-    // FOR STOP THE NOTIFICATION SERVICE
-    // stopService(new Intent(this, NotificationService.class)
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked) {
+            getSharedPreferences("SecurityCam", Context.MODE_PRIVATE).edit()
+                    .putBoolean("Notifications", true)
+                    .commit();
+            startService();
+
+        } else {
+            getSharedPreferences("SecurityCam", Context.MODE_PRIVATE).edit()
+                    .putBoolean("Notifications", false)
+                    .commit();
+            stopService();
+        }
+
+    }
+
 }

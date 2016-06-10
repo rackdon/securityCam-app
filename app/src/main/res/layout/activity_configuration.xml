@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="app.rackdon.com.securitycam.ConfigurationActivity">
+    tools:context="app.rackdon.com.securitycam.ConfigurationActivity"
+    android:layout_marginTop="50px">
 
     <Button
         android:layout_width="wrap_content"
@@ -28,25 +29,17 @@
         android:layout_centerHorizontal="true"
         android:onClick="showPortsFragment"/>
 
-    <Button
+    <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Notifications"
-        android:id="@+id/notifications"
-        android:layout_below="@+id/ports"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Reset database"
-        android:id="@+id/resetDDBB"
-        android:onClick="resetDB"
-        android:layout_below="@+id/notifications"
-        android:layout_alignLeft="@+id/notifications"
-        android:layout_alignStart="@+id/notifications"
-        android:layout_alignRight="@+id/notifications"
-        android:layout_alignEnd="@+id/notifications" />
+        android:text="Motion Notifications"
+        android:id="@+id/notificationsSwitch"
+        android:textOff="OFF"
+        android:textOn="ON"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="20px"/>
 
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -59,7 +52,19 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/resetDDBB" />
+        android:layout_below="@+id/resetDDBB" >
+
+    </FrameLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset database"
+        android:id="@+id/resetDDBB"
+        android:onClick="resetDB"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_below="@+id/ports"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
