@@ -1,21 +1,23 @@
 package app.rackdon.com.securitycam;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import app.rackdon.com.securitycam.notification.NotificationService;
+import app.rackdon.com.securitycam.dialogs.Dialogs;
+import app.rackdon.com.securitycam.utils.UtilsCommon;
 
 public class MainActivity extends AppCompatActivity {
+    private UtilsCommon utilsCommon;
+    private Dialogs dialogs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        utilsCommon = new UtilsCommon();
+        dialogs = new Dialogs(this);
     }
 
     public void videoActivity(View view) {
@@ -30,35 +32,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, ConfigurationActivity.class));
     }
 
-    public boolean hasUrl() {
-        String url = getSharedPreferences("SecurityCam", Context.MODE_PRIVATE).getString("Url", "");
-
-        return !url.equals("") && !url.equals("http://")? true : false;
-    }
-
-    public AlertDialog.Builder createUrlDialog(final Context context) {
-        return new AlertDialog.Builder(context)
-                .setTitle("Url needed")
-                .setMessage("Please set the Url server")
-                .setPositiveButton("Configuration", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(context, ConfigurationActivity.class));
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
-        if(!hasUrl()) {
-            createUrlDialog(this).show();
+        if(!utilsCommon.hasUrl(this)) {
+            dialogs.createUrlNeededDialog(new Dialogs.CreateUrlNeededDialogCallback(){
+
+                @Override
+                public void openConfigurationActifity() {
+                    startActivity(new Intent(getApplicationContext(), ConfigurationActivity.class));
+                }
+            }).show();
         }
     }
 }

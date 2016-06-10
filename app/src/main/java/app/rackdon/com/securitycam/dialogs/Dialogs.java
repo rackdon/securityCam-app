@@ -8,6 +8,7 @@ import android.provider.Settings;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import app.rackdon.com.securitycam.ConfigurationActivity;
 import app.rackdon.com.securitycam.http.DeletePictures;
 
 /**
@@ -67,6 +68,24 @@ public class Dialogs {
                 });
     }
 
+    public AlertDialog.Builder createUrlNeededDialog(final CreateUrlNeededDialogCallback callback) {
+        return new AlertDialog.Builder(context)
+                .setTitle("Url needed")
+                .setMessage("Please set the Url server")
+                .setPositiveButton("Configuration", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        callback.openConfigurationActifity();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+    }
+
     public AlertDialog.Builder createWarningDialog(final CreateWarningDialogCallback callback) {
         return new AlertDialog.Builder(context)
                 .setTitle("WARNING!!!")
@@ -105,5 +124,9 @@ public class Dialogs {
 
     public interface  CreateWarningDialogCallback {
         void showFragment();
+    }
+
+    public interface  CreateUrlNeededDialogCallback {
+        void openConfigurationActifity();
     }
 }

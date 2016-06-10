@@ -24,6 +24,12 @@ public class UtilsCommon {
         return url.startsWith("http://");
     }
 
+    public boolean hasUrl(Context context) {
+        String url = context.getSharedPreferences("SecurityCam", Context.MODE_PRIVATE).getString("Url", "");
+
+        return !url.equals("") && !url.equals("http://")? true : false;
+    }
+
     public long getUnixTime(int year, int month, int day, int hour, int min) {
         try {
             Date date = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(
