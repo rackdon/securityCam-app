@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     tools:context="layout.PortsFragment"
     android:visibility="visible"
-    android:id="@+id/portsFragment">
+    android:id="@+id/portsFragment"
+    android:gravity="center">
 
 
     <TextView
@@ -14,12 +15,10 @@
         android:text="Server Port"
         android:id="@+id/serverPort"
         android:layout_gravity="center"
-        android:layout_marginTop="31dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="false"/>
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true" />-->
 
     <EditText
         android:layout_width="55dp"
@@ -28,29 +27,29 @@
         android:ems="10"
         android:id="@+id/editTextServer"
         android:layout_gravity="center"
-        android:layout_alignBottom="@+id/serverPort"
-        android:layout_alignLeft="@+id/serverPort"
-        android:layout_marginStart="140dp"
-        android:layout_marginLeft="140dp"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/serverPort"
+        android:layout_toEndOf="@+id/serverPort"
+        android:layout_marginLeft="21dp"
+        android:layout_marginStart="21dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/saveBt"
-        android:layout_alignTop="@+id/cancelBt"
-        android:layout_alignRight="@+id/editTextServer"
-        android:layout_alignEnd="@+id/editTextServer" />
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/editTextServer"
+        android:layout_toEndOf="@+id/editTextServer" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
         android:id="@+id/cancelBt"
-        android:layout_below="@+id/serverPort"
-        android:layout_alignLeft="@+id/serverPort"
-        android:layout_alignStart="@+id/serverPort"
-        android:layout_marginTop="52dp" />
+        android:layout_alignTop="@+id/saveBt"
+        android:layout_toRightOf="@+id/saveBt"
+        android:layout_toEndOf="@+id/saveBt" />
 
 </RelativeLayout>

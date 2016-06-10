@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="app.rackdon.com.securitycam.MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Video"
+        android:id="@+id/video"
+        android:onClick="videoActivity"
+        android:layout_alignBaseline="@+id/imageDownload"
+        android:layout_alignBottom="@+id/imageDownload"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Image Download"
+        android:id="@+id/imageDownload"
+        android:onClick="imageDownloadActivity"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="48dp"
+        android:layout_marginStart="48dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Configuration"
+        android:id="@+id/configuration"
+        android:onClick="configurationActivity"
+        android:layout_alignTop="@+id/imageDownload"
+        android:layout_toRightOf="@+id/video"
+        android:layout_toEndOf="@+id/video"
+        android:layout_marginLeft="53dp"
+        android:layout_marginStart="53dp" />
+
+</RelativeLayout>

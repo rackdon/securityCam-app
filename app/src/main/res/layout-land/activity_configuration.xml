@@ -16,18 +16,18 @@
         android:text="Url"
         android:id="@+id/url"
         android:onClick="setUrl"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="57dp" />
+        android:layout_alignTop="@+id/port"
+        android:layout_toLeftOf="@+id/notificationsSwitch"
+        android:layout_toStartOf="@+id/notificationsSwitch" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Port"
         android:id="@+id/port"
-        android:layout_below="@+id/url"
-        android:layout_centerHorizontal="true"
-        android:onClick="showPortsFragment"/>
+        android:onClick="showPortsFragment"
+        android:layout_below="@+id/notificationsSwitch"
+        android:layout_centerHorizontal="true" />
 
     <Switch
         android:layout_width="wrap_content"
@@ -47,12 +47,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/containerPortsFragment"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/resetDDBB" >
+        android:layout_below="@+id/port"
+        android:layout_centerHorizontal="true">
 
     </FrameLayout>
 
@@ -63,8 +59,9 @@
         android:id="@+id/resetDDBB"
         android:onClick="resetDB"
         android:layout_gravity="center_horizontal|top"
-        android:layout_below="@+id/port"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignTop="@+id/port"
+        android:layout_toRightOf="@+id/notificationsSwitch"
+        android:layout_toEndOf="@+id/notificationsSwitch" />
 
 
 </RelativeLayout>

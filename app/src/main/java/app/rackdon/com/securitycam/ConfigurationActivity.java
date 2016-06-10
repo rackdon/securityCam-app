@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import app.rackdon.com.securitycam.dialogs.Dialogs;
 import app.rackdon.com.securitycam.notification.NotificationService;
@@ -50,17 +51,26 @@ public class ConfigurationActivity extends AppCompatActivity implements Compound
         Dialogs.CreateUrlDialogCallback callback = new Dialogs.CreateUrlDialogCallback() {
             @Override
             public void saveUrl() {
+                Toast toast;
                 String url = inputUrl.getText().toString();
                 url = utils.containsHTTP(url) ? url : "http://" + url;
+                if (url.equals("http://")) {
+                    Toast.makeText(
+                            getApplicationContext(), "Url can not be empty", Toast.LENGTH_LONG).show();
 
-                getSharedPreferences("SecurityCam", Context.MODE_PRIVATE).edit()
-                        .putString("Url", url)
-                        .commit();
-                if (getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
-                .getBoolean("Notifications", false)) {
-                    stopService();
-                    notificationsIntent = getNotificationsIntent();
-                    startService();
+                } else {
+                    getSharedPreferences("SecurityCam", Context.MODE_PRIVATE).edit()
+                            .putString("Url", url)
+                            .commit();
+                    if (getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
+                            .getBoolean("Notifications", false)) {
+                        stopService();
+                        notificationsIntent = getNotificationsIntent();
+                        startService();
+                        Toast.makeText(
+                                getApplicationContext(), "Url has been changed correctly", Toast.LENGTH_LONG).show();
+                    }
+
                 }
             }
         };
