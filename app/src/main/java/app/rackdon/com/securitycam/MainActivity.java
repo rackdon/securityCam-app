@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             dialogs.createUrlNeededDialog(new Dialogs.CreateUrlNeededDialogCallback(){
 
                 @Override
-                public void openConfigurationActifity() {
+                public void openConfigurationActivity() {
                     startActivity(new Intent(getApplicationContext(), ConfigurationActivity.class));
                 }
             }).show();

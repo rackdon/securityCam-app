@@ -75,7 +75,7 @@ public class Dialogs {
                 .setPositiveButton("Configuration", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        callback.openConfigurationActifity();
+                        callback.openConfigurationActivity();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -127,6 +127,6 @@ public class Dialogs {
     }
 
     public interface  CreateUrlNeededDialogCallback {
-        void openConfigurationActifity();
+        void openConfigurationActivity();
     }
 }
