@@ -35,9 +35,9 @@ public class DeletePictures extends AsyncTask<String, Void, Integer>{
     protected void onPostExecute(Integer status) {
         Toast toast;
         if(status == 200) {
-            toast = Toast.makeText(context, "Database reset correctly", Toast.LENGTH_LONG);
+            toast = Toast.makeText(context, "Database have been reset correctly", Toast.LENGTH_LONG);
         } else {
-            toast = Toast.makeText(context, "Database reset fail", Toast.LENGTH_LONG);
+            toast = Toast.makeText(context, "Database reset have failed", Toast.LENGTH_LONG);
         }
         toast.show();
     }

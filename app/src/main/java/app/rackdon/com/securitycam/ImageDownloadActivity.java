@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import app.rackdon.com.securitycam.dialogs.Dialogs;
 import app.rackdon.com.securitycam.utils.UtilsCommon;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,6 +29,7 @@ public class ImageDownloadActivity extends AppCompatActivity {
     @BindView(R.id.timeContainer) View timeView;
     @BindView(R.id.imageTypesSpinner) Spinner imageDownloadTypeSpinner;
     UtilsCommon utilsCommon;
+    Dialogs dialogs;
     private Calendar calendar;
     private String spinnerSelection;
     private int year;
@@ -45,6 +47,7 @@ public class ImageDownloadActivity extends AppCompatActivity {
         addSpinnerListener();
         startFragments();
         utilsCommon = new UtilsCommon();
+        dialogs = new Dialogs(this);
     }
 
     public void addSpinnerListener() {
@@ -63,11 +66,23 @@ public class ImageDownloadActivity extends AppCompatActivity {
     }
 
     public void Download(View view) {
-        String date = utilsCommon.joinDateAsString(year, month, day, hour, min, 00);
-        Intent intent = new Intent(this, PicturesActivity.class);
-        intent.putExtra("DATE", date);
-        intent.putExtra("IMAGE_TYPE", spinnerSelection);
-        startActivity(intent);
+        if(!utilsCommon.isConnection(this)) {
+            new Dialogs(this).createConnectionDialog().show();
+        } else if (!utilsCommon.hasUrl(this)) {
+            dialogs.createUrlNeededDialog(new Dialogs.CreateUrlNeededDialogCallback(){
+
+                @Override
+                public void openConfigurationActivity() {
+                    startActivity(new Intent(getApplicationContext(), ConfigurationActivity.class));
+                }
+            }).show();
+        } else {
+            String date = utilsCommon.joinDateAsString(year, month, day, hour, min, 00);
+            Intent intent = new Intent(this, PicturesActivity.class);
+            intent.putExtra("DATE", date);
+            intent.putExtra("IMAGE_TYPE", spinnerSelection);
+            startActivity(intent);
+        }
     }
 
     private void setActualDateValues() {

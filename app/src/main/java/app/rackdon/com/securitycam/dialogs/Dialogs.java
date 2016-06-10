@@ -75,10 +75,26 @@ public class Dialogs {
                 .setPositiveButton("Configuration", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        callback.openConfigurationActivity();
+                        if (callback != null) {
+                            callback.openConfigurationActivity();
+                        } else {
+                            dialog.cancel();
+                        }
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+    }
+
+    public AlertDialog.Builder createUrlNeededDialog() {
+        return new AlertDialog.Builder(context)
+                .setTitle("Url needed")
+                .setMessage("Please set the Url server")
+                .setNegativeButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();

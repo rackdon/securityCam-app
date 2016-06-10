@@ -83,10 +83,13 @@ public class ConfigurationActivity extends AppCompatActivity implements Compound
     }
 
     public void resetDB(View view) {
-        if (new UtilsCommon().isConnection(this)) {
-            dialogs.createResetDbDialog().show();
-        } else {
+        if (!utils.isConnection(this)) {
             dialogs.createConnectionDialog().show();
+        } else if (!utils.hasUrl(this)) {
+            dialogs.createUrlNeededDialog().show();
+        }
+        else {
+            dialogs.createResetDbDialog().show();
         }
     }
 
