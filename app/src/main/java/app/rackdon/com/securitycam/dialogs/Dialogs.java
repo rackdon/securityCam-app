@@ -127,7 +127,7 @@ public class Dialogs {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
         inputUrl.setLayoutParams(lp);
-        inputUrl.setHint(context.getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
+        inputUrl.setText(context.getSharedPreferences("SecurityCam", Context.MODE_PRIVATE)
                 .getString("Url", ""));
         dialog.setView(inputUrl);
 
