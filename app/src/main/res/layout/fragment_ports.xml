@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Server Port"
+        android:text="@string/serverPort"
         android:id="@+id/serverPort"
         android:layout_gravity="center"
         android:layout_marginTop="31dp"
@@ -30,6 +30,7 @@
         android:layout_gravity="center"
         android:layout_alignBottom="@+id/serverPort"
         android:layout_alignLeft="@+id/serverPort"
+        android:layout_alignStart="@+id/serverPort"
         android:layout_marginStart="140dp"
         android:layout_marginLeft="140dp"
         android:background="@android:color/transparent"/>
@@ -37,7 +38,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="@string/save"
         android:id="@+id/saveBt"
         android:layout_alignTop="@+id/cancelBt"
         android:layout_alignRight="@+id/editTextServer"
@@ -46,7 +47,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:id="@+id/cancelBt"
         android:layout_below="@+id/serverPort"
         android:layout_alignLeft="@+id/serverPort"

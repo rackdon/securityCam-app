@@ -12,7 +12,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Video"
+        android:text="@string/video"
         android:id="@+id/video"
         android:onClick="videoActivity"
         android:layout_alignBaseline="@+id/imageDownload"
@@ -22,7 +22,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Image Download"
+        android:text="@string/imageDownload"
         android:id="@+id/imageDownload"
         android:onClick="imageDownloadActivity"
         android:layout_centerVertical="true"
@@ -34,7 +34,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Configuration"
+        android:text="@string/configuration"
         android:id="@+id/configuration"
         android:onClick="configurationActivity"
         android:layout_alignTop="@+id/imageDownload"

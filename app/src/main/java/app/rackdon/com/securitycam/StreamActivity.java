@@ -80,14 +80,12 @@ public class StreamActivity extends AppCompatActivity {
     }
 
     public void changeButton() {
-        boolean isTextStart = "Start".equals(changeableButton.getText());
-
-        if(isTextStart) {
-            changeableButton.setText("Stop");
+        if(changeableButton.getText().toString().equals(getResources().getString(R.string.start))) {
             streamFragment.start();
+            changeableButton.setText(R.string.stop);
         }
         else {
-            changeableButton.setText("Start");
+            changeableButton.setText(R.string.start);
             streamFragment.onStop();
         }
     }

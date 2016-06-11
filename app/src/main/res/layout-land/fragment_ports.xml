@@ -12,13 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Server Port"
+        android:text="@string/serverPort"
         android:id="@+id/serverPort"
         android:layout_gravity="center"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="false"/>
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_alignParentStart="true" />-->
 
     <EditText
         android:layout_width="55dp"
@@ -37,7 +35,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="@string/save"
         android:id="@+id/saveBt"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/editTextServer"
@@ -46,7 +44,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:id="@+id/cancelBt"
         android:layout_alignTop="@+id/saveBt"
         android:layout_toRightOf="@+id/saveBt"

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import app.rackdon.com.securitycam.R;
+import app.rackdon.com.securitycam.StreamActivity;
 import app.rackdon.com.securitycam.stream.DoRead;
 import app.rackdon.com.securitycam.stream.MjpegInputStream;
 import app.rackdon.com.securitycam.stream.MjpegView;
@@ -87,15 +88,14 @@ public class StreamFragment extends Fragment {
             @Override
             public void onError(String e) {
                 Log.wtf("Error", e);
-                AlertDialog.Builder dialog = createDialog(context);
-                dialog.show();
+                createDialog(context).show();
             }
         };
 
         new DoRead(callback).execute(URL);
     }
 
-    public AlertDialog.Builder createDialog(Context context) {
+    public AlertDialog.Builder createDialog(final Context context) {
         return new AlertDialog.Builder(context)
                 .setTitle("There is no video to display")
                 .setMessage("Please ensure you have the correct server url and the server is on")

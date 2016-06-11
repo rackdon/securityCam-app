@@ -8,12 +8,12 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="app.rackdon.com.securitycam.ConfigurationActivity"
-    android:layout_marginTop="50px">
+    android:layout_marginTop="50dp">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Url"
+        android:text="@string/url"
         android:id="@+id/url"
         android:onClick="setUrl"
         android:layout_alignTop="@+id/port"
@@ -23,7 +23,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Port"
+        android:text="@string/port"
         android:id="@+id/port"
         android:onClick="showPortsFragment"
         android:layout_below="@+id/notificationsSwitch"
@@ -32,14 +32,14 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Motion Notifications"
+        android:text="@string/notifications"
         android:id="@+id/notificationsSwitch"
         android:textOff="OFF"
         android:textOn="ON"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="23dp"
-        android:layout_marginBottom="20px"/>
+        android:layout_marginBottom="20dp"/>
 
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -55,7 +55,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reset database"
+        android:text="@string/resetDB"
         android:id="@+id/resetDDBB"
         android:onClick="resetDB"
         android:layout_gravity="center_horizontal|top"

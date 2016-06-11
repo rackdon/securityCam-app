@@ -12,7 +12,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Video"
+        android:text="@string/video"
         android:id="@+id/video"
         android:layout_alignParentTop="true"
         android:layout_marginTop="120dp"
@@ -25,7 +25,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Image Download"
+        android:text="@string/imageDownload"
         android:id="@+id/imageDownload"
         android:layout_centerVertical="true"
         android:layout_alignRight="@+id/video"
@@ -37,7 +37,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Configuration"
+        android:text="@string/configuration"
         android:id="@+id/configuration"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

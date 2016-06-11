@@ -9,30 +9,31 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:id="@+id/cancelBT"
         android:layout_gravity="left|bottom"
         android:layout_below="@+id/timePicker"
         android:layout_alignRight="@+id/timePicker"
         android:layout_alignEnd="@+id/timePicker"
-        android:layout_marginRight="150px"/>
+        android:layout_marginRight="150dp"
+        android:layout_marginEnd="150dp"/>
 
     <TimePicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/timePicker"
         android:layout_gravity="center"
-        android:timePickerMode="spinner"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ok"
+        android:text="@string/ok"
         android:id="@+id/okBT"
         android:layout_below="@+id/timePicker"
         android:layout_alignLeft="@+id/timePicker"
         android:layout_alignStart="@+id/timePicker"
-        android:layout_marginLeft="150px"/>
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"/>
 </RelativeLayout>
